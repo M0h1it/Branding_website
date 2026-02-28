@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Halal Meat Shop — Fresh • Halal • Hygienic • Premium Cuts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF5F1;
+    --beige: #F3ECE6;
+    --black: #0B0B0B;
+    --charcoal: #1A1A1A;
+    --gold: #C78A2E;
+    --gold-light: #E0B76A;
+    --gold-pale: #F5E6C8;
+    --text-dark: #1E1E1E;
+    --text-muted: #6B6B6B;
+    --text-white: #FFFFFF;
+    --border: rgba(199,138,46,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--charcoal); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+    background: rgba(11,11,11,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(199,138,46,0.15);
+    transition: all 0.3s ease;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-star {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    flex-shrink: 0;
+  }
+  .nav-brand-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-white);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+  .nav-brand-text span { color: var(--gold-light); display: block; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+  .nav-links {
+    display: flex; align-items: center; gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .btn-nav-swiggy {
+    background: var(--gold);
+    color: var(--black);
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-nav-swiggy:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-nav-call {
+    color: var(--gold-light);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(199,138,46,0.4);
+    padding: 8px 16px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+  .btn-nav-call:hover { border-color: var(--gold); background: rgba(199,138,46,0.08); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 24px; height: 1.5px; background: white; display: block; transition: all 0.3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--black);
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=1600&q=80');
+    background-size: cover;
+    background-position: center 40%;
+    opacity: 0.35;
+    transform: scale(1.05);
+    animation: heroZoom 12s ease-out forwards;
+  }
+  @keyframes heroZoom { to { transform: scale(1); opacity: 0.3; } }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(11,11,11,0.92) 40%, rgba(11,11,11,0.55) 100%);
+  }
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 780px;
+    padding: 140px 5% 80px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(199,138,46,0.5);
+    background: rgba(199,138,46,0.08);
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+  .hero-badge span {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 500;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 6rem);
+    font-weight: 600;
+    color: var(--text-white);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+    display: block;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+  .hero-divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 28px;
+    animation: fadeUp 1s ease 0.65s both;
+  }
+  .hero-tagline {
+    display: flex; align-items: center; gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+    animation: fadeUp 1s ease 0.7s both;
+  }
+  .hero-tagline-item {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); font-weight: 400;
+  }
+  .hero-tagline-sep {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--gold); margin: 0 12px; flex-shrink: 0;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border: 1.5px solid var(--gold);
+  }
+  .btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(199,138,46,0.35); }
+  .btn-outline-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    padding: 13px 22px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s;
+  }
+  .btn-outline-white:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+  .hero-phone {
+    position: absolute; right: 5%; bottom: 80px; z-index: 3;
+    animation: fadeUp 1s ease 1s both;
+  }
+  .hero-phone-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(199,138,46,0.3);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 20px 26px;
+    text-align: center;
+  }
+  .hero-phone-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px; }
+  .hero-phone-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: white; font-weight: 500; }
+  .hero-scroll {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    z-index: 3;
+  }
+  .hero-scroll span { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(199,138,46,0.6), transparent); animation: scrollLine 2s ease infinite; }
+  @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 5%; }
+  .section-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); opacity: 0.4; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-dark);
+    letter-spacing: -0.01em;
+  }
+  .section-title-white { color: var(--text-white); }
+  .section-body {
+    font-size: 1rem; line-height: 1.75; color: var(--text-muted);
+    max-width: 560px;
+  }
+
+  /* ── STATS STRIP ── */
+  #stats {
+    background: var(--gold);
+    padding: 0;
+    overflow: hidden;
+  }
+  .stats-inner {
+    display: flex; align-items: stretch;
+    max-width: 100%;
+  }
+  .stat-item {
+    flex: 1;
+    padding: 32px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(11,11,11,0.1);
+    transition: background 0.2s;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: rgba(11,11,11,0.06); }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 700;
+    color: var(--black); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(11,11,11,0.65); font-weight: 500; }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+  }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .about-text { }
+  .about-text .section-title { margin-bottom: 20px; }
+  .about-text p { font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 16px; }
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-top: 32px;
+  }
+  .about-feat {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--beige);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .about-feat-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .about-feat-title { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); margin-bottom: 2px; }
+  .about-feat-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+  .about-visual { position: relative; }
+  .about-img-main {
+    width: 100%; border-radius: 16px; overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+  .about-img-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-float-card {
+    position: absolute; bottom: -24px; left: -32px;
+    background: var(--charcoal);
+    border-radius: 12px;
+    padding: 20px 22px;
+    border: 1px solid rgba(199,138,46,0.25);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    min-width: 180px;
+  }
+  .about-float-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 700;
+    color: var(--gold-light); line-height: 1;
+  }
+  .about-float-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+  .about-gold-line {
+    width: 40px; height: 3px; background: var(--gold); border-radius: 2px; margin-bottom: 16px;
+  }
+
+  /* ── PRODUCTS ── */
+  #products { background: var(--beige); }
+  .products-header {
+    text-align: center; margin-bottom: 60px;
+    max-width: 500px; margin-left: auto; margin-right: auto;
+  }
+  .products-header .section-label { justify-content: center; }
+  .products-header .section-label::after { display: none; }
+  .products-header .section-label::before { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); opacity: 0.4; }
+  .products-header p { font-size: 0.95rem; color: var(--text-muted); margin-top: 14px; line-height: 1.65; }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .product-card {
+    background: var(--cream);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(199,138,46,0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+  .product-img {
+    aspect-ratio: 4/3; overflow: hidden; position: relative;
+  }
+  .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+  .product-card:hover .product-img img { transform: scale(1.04); }
+  .product-category-tag {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .product-info { padding: 20px 22px 24px; }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; color: var(--text-dark);
+    margin-bottom: 8px; line-height: 1.2;
+  }
+  .product-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .product-divider { width: 30px; height: 1.5px; background: var(--gold); margin: 12px 0; border-radius: 1px; }
+
+  /* ── QUALITY ── */
+  #quality {
+    background: var(--charcoal);
+    position: relative; overflow: hidden;
+  }
+  .quality-pattern {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 70% 50%, rgba(199,138,46,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .quality-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
+  }
+  .quality-text .section-title { margin-bottom: 20px; }
+  .quality-text p { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 36px; }
+  .quality-items { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .quality-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(199,138,46,0.2);
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .quality-item:hover { border-color: rgba(199,138,46,0.5); background: rgba(199,138,46,0.06); }
+  .quality-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .quality-item-title { font-size: 0.85rem; font-weight: 600; color: var(--text-white); margin-bottom: 4px; }
+  .quality-item-desc { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+  .quality-visual {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;
+    gap: 12px; position: relative;
+  }
+  .quality-img {
+    border-radius: 10px; overflow: hidden;
+  }
+  .quality-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); }
+  .quality-img:nth-child(1) { grid-column: span 2; aspect-ratio: 16/7; }
+  .quality-img:nth-child(2) { aspect-ratio: 1; }
+  .quality-img:nth-child(3) { aspect-ratio: 1; }
+  .halal-badge {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: var(--gold);
+    color: var(--black);
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 0 4px var(--charcoal), 0 0 0 6px var(--gold);
+    z-index: 2;
+  }
+  .halal-badge span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; line-height: 1; }
+  .halal-badge span:last-child { font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+
+  /* ── BULK ORDERS ── */
+  #bulk {
+    background: var(--cream);
+    padding: 0;
+  }
+  .bulk-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+  .bulk-img-side {
+    position: relative; overflow: hidden;
+  }
+  .bulk-img-side img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bulk-img-side::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(250,245,241,0.3));
+  }
+  .bulk-content {
+    padding: 80px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    background: var(--beige);
+  }
+  .bulk-content .section-label { margin-bottom: 14px; }
+  .bulk-content .section-title { margin-bottom: 16px; }
+  .bulk-content p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 32px; }
+  .bulk-features { list-style: none; margin-bottom: 36px; }
+  .bulk-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.85rem; color: var(--text-dark); padding: 8px 0;
+    border-bottom: 1px solid rgba(199,138,46,0.12);
+  }
+  .bulk-features li:last-child { border-bottom: none; }
+  .bulk-features li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; flex-shrink: 0; }
+
+  /* ── HOW TO ORDER ── */
+  #order {
+    background: var(--black);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .order-bg-accent {
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(199,138,46,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .order-header { margin-bottom: 64px; }
+  .order-header .section-label { justify-content: center; }
+  .order-header .section-label::after { display: none; }
+  .order-header .section-label::before { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); opacity: 0.4; }
+  .order-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    max-width: 900px; margin: 0 auto 56px;
+    position: relative;
+  }
+  .order-steps::before {
+    content: '';
+    position: absolute; top: 40px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+    height: 1px; background: linear-gradient(90deg, var(--gold), rgba(199,138,46,0.2) 50%, var(--gold));
+    z-index: 0;
+  }
+  .order-step { position: relative; z-index: 1; padding: 0 24px; }
+  .order-step-num {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(199,138,46,0.1);
+    border: 1.5px solid rgba(199,138,46,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.3s;
+  }
+  .order-step:hover .order-step-num { background: rgba(199,138,46,0.2); border-color: var(--gold); }
+  .order-step-num-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--gold-light);
+  }
+  .order-step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: white; font-weight: 600; margin-bottom: 8px; }
+  .order-step-desc { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+  .order-actions {
+    display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+  }
+  .btn-gold-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--gold-light);
+    padding: 13px 24px;
+    border-radius: 4px;
+    font-size: 0.82rem; font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    border: 1px solid rgba(199,138,46,0.45);
+    transition: all 0.2s;
+  }
+  .btn-gold-outline:hover { border-color: var(--gold); background: rgba(199,138,46,0.08); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--beige); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    max-width: 1100px; margin: 0 auto;
+    align-items: start;
+  }
+  .contact-info .section-title { margin-bottom: 28px; }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(199,138,46,0.12);
+  }
+  .contact-detail:last-child { border-bottom: none; }
+  .contact-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .contact-detail-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .contact-detail-value { font-size: 0.92rem; color: var(--text-dark); line-height: 1.5; }
+  .contact-detail-value a { color: var(--text-dark); text-decoration: none; }
+  .contact-detail-value a:hover { color: var(--gold); }
+  .contact-actions { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #25D366; color: white;
+    padding: 12px 22px; border-radius: 4px;
+    font-size: 0.82rem; font-weight: 600;
+    text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .btn-whatsapp:hover { background: #20bb5a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
+  .contact-map {
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border: 1px solid rgba(199,138,46,0.15);
+  }
+  .contact-map iframe { display: block; width: 100%; height: 380px; border: none; }
+  .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .hours-row { display: flex; justify-content: space-between; font-size: 0.82rem; }
+  .hours-day { color: var(--text-muted); }
+  .hours-time { color: var(--text-dark); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 48px 5% 28px;
+    border-top: 1px solid rgba(199,138,46,0.15);
+  }
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px;
+    margin-bottom: 32px;
+  }
+  .footer-brand {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: white; letter-spacing: 0.02em;
+  }
+  .footer-brand-name em { color: var(--gold-light); font-style: normal; }
+  .footer-brand-since { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+  .footer-links a {
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-social a {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+  .footer-halal {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(199,138,46,0.5);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    section { padding: 70px 5%; }
+    .about-grid { grid-template-columns: 1fr; gap: 50px; }
+    .about-float-card { left: 16px; bottom: -16px; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .quality-inner { grid-template-columns: 1fr; gap: 50px; }
+    .bulk-inner { grid-template-columns: 1fr; }
+    .bulk-img-side { height: 280px; }
+    .bulk-content { padding: 50px 32px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .order-steps { grid-template-columns: 1fr; gap: 36px; }
+    .order-steps::before { display: none; }
+    .stats-inner { flex-wrap: wrap; }
+    .stat-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid rgba(11,11,11,0.1); }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .about-features { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr; }
+    .quality-items { grid-template-columns: 1fr; }
+    .hero-phone { display: none; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-brand">
+    <div class="nav-star"></div>
+    <div class="nav-brand-text">
+      Star Halal Meat Shop
+      <span>Since 1995 • Gurugram</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#products">Cuts</a></li>
+    <li><a href="#quality">Quality</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="tel:+919999999999" class="btn-nav-call">📞 Call Now</a>
+    <a href="https://swiggy.com" target="_blank" class="btn-nav-swiggy">Order on Swiggy</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>Serving Since 1995 — Gurugram's Trusted Butcher</span>
+    </div>
+    <h1 class="hero-title">
+      Star Halal<br>
+      <em>Meat Shop</em>
+    </h1>
+    <p class="hero-subtitle">Meat All Solutions</p>
+    <div class="hero-divider"></div>
+    <div class="hero-tagline">
+      <span class="hero-tagline-item">Fresh</span>
+      <span class="hero-tagline-sep"></span>
+      <span class="hero-tagline-item">Halal Certified</span>
+      <span class="hero-tagline-sep"></span>
+      <span class="hero-tagline-item">Hygienic</span>
+      <span class="hero-tagline-sep"></span>
+      <span class="hero-tagline-item">Premium Cuts</span>
+    </div>
+    <div class="hero-actions">
+      <a href="https://swiggy.com" target="_blank" class="btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Order on Swiggy
+      </a>
+      <a href="https://wa.me/919999999999" target="_blank" class="btn-outline-white">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="tel:+919999999999" class="btn-outline-white">
+        📞 Call Now
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-phone">
+    <div class="hero-phone-card">
+      <div class="hero-phone-label">Order Helpline</div>
+      <div class="hero-phone-num">+91 99999 99999</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Years of Trust</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Halal Certified</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Daily</div>
+      <div class="stat-label">Fresh Cuts</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5000+</div>
+      <div class="stat-label">Happy Families</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">Our Legacy</div>
+      <h2 class="section-title">A Tradition of<br>Trust Since 1995</h2>
+      <div class="about-gold-line"></div>
+      <p>What started as a single counter in the heart of Gurugram's Hari Nagar has grown into a household name. For over three decades, Star Halal Meat Shop has stood by one promise: only the finest, freshest, and most hygienic halal meat to your family's table.</p>
+      <p>Every cut is prepared with the care of a craftsman, following rigorous halal standards that we've upheld without compromise. From the daily morning delivery to the careful hands of our experienced butchers — quality is never an afterthought here.</p>
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="about-feat-icon">🌿</div>
+          <div>
+            <div class="about-feat-title">Halal Certified</div>
+            <div class="about-feat-desc">Strictly verified halal process from source to cut</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🌅</div>
+          <div>
+            <div class="about-feat-title">Fresh Daily</div>
+            <div class="about-feat-desc">New stock delivered and cut every morning</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🧤</div>
+          <div>
+            <div class="about-feat-title">Hygienic Standards</div>
+            <div class="about-feat-desc">Gloved handling & clean cutting surfaces always</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">⭐</div>
+          <div>
+            <div class="about-feat-title">30+ Years</div>
+            <div class="about-feat-desc">Trusted by thousands of Gurugram families</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual reveal reveal-delay-2">
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Fresh halal meat cuts" loading="lazy">
+      </div>
+      <div class="about-float-card">
+        <div class="about-float-num">30+</div>
+        <div class="about-float-label">Years of Serving<br>Gurugram</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header reveal">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our Fresh Cuts</h2>
+    <p>Handpicked, freshly cut every morning. No frozen stock. Only what's fresh today.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&q=80" alt="Chicken cuts" loading="lazy">
+        <span class="product-category-tag">Chicken</span>
+      </div>
+      <div class="product-info">
+        <div class="product-divider"></div>
+        <div class="product-name">Full Chicken</div>
+        <div class="product-desc">Whole broiler chicken, freshly cleaned and dressed. Available in full, half, or quarter cuts as per your need.</div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1567121938596-39b5cf4e5e5d?w=600&q=80" alt="Chicken breast" loading="lazy">
+        <span class="product-category-tag">Chicken</span>
+      </div>
+      <div class="product-info">
+        <div class="product-divider"></div>
+        <div class="product-name">Boneless Breast</div>
+        <div class="product-desc">Premium boneless chicken breast, skinless and tender. Perfect for grills, curries, and meal preps.</div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1602473595665-86a51a59b15c?w=600&q=80" alt="Mutton cuts" loading="lazy">
+        <span class="product-category-tag">Mutton</span>
+      </div>
+      <div class="product-info">
+        <div class="product-divider"></div>
+        <div class="product-name">Mutton Curry Cut</div>
+        <div class="product-desc">Freshly cut goat meat into medium-sized pieces, ideal for classic Indian curries and slow-cooked dishes.</div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80" alt="Mutton chops" loading="lazy">
+        <span class="product-category-tag">Mutton</span>
+      </div>
+      <div class="product-info">
+        <div class="product-divider"></div>
+        <div class="product-name">Mutton Chops</div>
+        <div class="product-desc">Bone-in rib chops cut to perfection. A BBQ and grilling favourite, full of flavour and juiciness.</div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Keema" loading="lazy">
+        <span class="product-category-tag">Special</span>
+      </div>
+      <div class="product-info">
+        <div class="product-divider"></div>
+        <div class="product-name">Fresh Keema</div>
+        <div class="product-desc">Freshly ground minced meat — chicken or mutton — to order. No premixed, no frozen. Ground same-day.</div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Special bulk order" loading="lazy">
+        <span class="product-category-tag">Special Order</span>
+      </div>
+      <div class="product-info">
+        <div class="product-divider"></div>
+        <div class="product-name">Party / Bulk Orders</div>
+        <div class="product-desc">Customised large quantities for weddings, parties, and events. Call us 24 hours in advance for best preparation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section id="quality">
+  <div class="quality-pattern"></div>
+  <div class="quality-inner">
+    <div class="quality-text reveal">
+      <div class="section-label" style="color: var(--gold-light);">Our Standards</div>
+      <h2 class="section-title section-title-white">Quality You<br>Can Trust</h2>
+      <p>We hold ourselves to standards that go beyond regulations. Every step — from sourcing to slaughter to serving — reflects a commitment to quality that 30 years of trust demands.</p>
+      <div class="quality-items">
+        <div class="quality-item">
+          <div class="quality-icon">🕌</div>
+          <div class="quality-item-title">100% Halal Process</div>
+          <div class="quality-item-desc">Zabiha halal from source to shop. Verified and consistent.</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">🧼</div>
+          <div class="quality-item-title">Hygienic Cutting</div>
+          <div class="quality-item-desc">Sanitised surfaces, gloved hands, clean tools daily.</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">🌅</div>
+          <div class="quality-item-title">No Frozen Stock</div>
+          <div class="quality-item-desc">Fresh delivery every morning. Zero day-old carry-over.</div>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">🔪</div>
+          <div class="quality-item-title">Expert Butchery</div>
+          <div class="quality-item-desc">Skilled craftsmen with decades of cutting experience.</div>
+        </div>
+      </div>
+    </div>
+    <div class="quality-visual reveal reveal-delay-2">
+      <div class="quality-img">
+        <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=900&q=80" alt="Fresh meat" loading="lazy">
+      </div>
+      <div class="quality-img">
+        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&q=80" alt="Butcher at work" loading="lazy">
+      </div>
+      <div class="quality-img" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1602473595665-86a51a59b15c?w=500&q=80" alt="Premium cuts" loading="lazy">
+      </div>
+      <div class="halal-badge">
+        <span>حلال</span>
+        <span>Halal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BULK ORDERS -->
+<section id="bulk" style="padding:0;">
+  <div class="bulk-inner">
+    <div class="bulk-img-side reveal">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Party and wedding orders" loading="lazy">
+    </div>
+    <div class="bulk-content reveal reveal-delay-2">
+      <div class="section-label">Bulk & Events</div>
+      <h2 class="section-title">Order Booking for<br>Parties & Weddings</h2>
+      <p>Planning a wedding, dawat, or large family gathering? We handle bulk meat orders with the same freshness and hygiene as your daily order — just at scale.</p>
+      <ul class="bulk-features">
+        <li>Pre-booked quantities — never run short</li>
+        <li>Same-day fresh cutting for event day</li>
+        <li>Customised cuts as per your recipes</li>
+        <li>Chicken, mutton, and mixed combos</li>
+        <li>Reliable delivery to your venue or home</li>
+        <li>Trusted by hundreds of Gurugram families</li>
+      </ul>
+      <div class="contact-actions">
+        <a href="tel:+919999999999" class="btn-gold">📞 Call for Bulk Orders</a>
+        <a href="https://wa.me/919999999999" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section id="order">
+  <div class="order-bg-accent"></div>
+  <div class="order-header reveal">
+    <div class="section-label">Easy Ordering</div>
+    <h2 class="section-title section-title-white">How to Order</h2>
+  </div>
+  <div class="order-steps">
+    <div class="order-step reveal reveal-delay-1">
+      <div class="order-step-num"><span class="order-step-num-text">01</span></div>
+      <div class="order-step-title">Find Us on Swiggy</div>
+      <div class="order-step-desc">Search "Star Halal Meat Shop" on Swiggy and open our menu for the freshest cuts in Gurugram.</div>
+    </div>
+    <div class="order-step reveal reveal-delay-2">
+      <div class="order-step-num"><span class="order-step-num-text">02</span></div>
+      <div class="order-step-title">Choose Your Cuts</div>
+      <div class="order-step-desc">Pick the chicken, mutton, or special cuts you need. Add special instructions if required.</div>
+    </div>
+    <div class="order-step reveal reveal-delay-3">
+      <div class="order-step-num"><span class="order-step-num-text">03</span></div>
+      <div class="order-step-title">Get Fresh Delivery</div>
+      <div class="order-step-desc">We cut fresh on order and dispatch quickly. Your meat arrives fresh to your door.</div>
+    </div>
+  </div>
+  <div class="order-actions reveal">
+    <a href="https://swiggy.com" target="_blank" class="btn-gold">Order on Swiggy Now</a>
+    <a href="https://wa.me/919999999999" target="_blank" class="btn-gold-outline">WhatsApp Order</a>
+    <a href="tel:+919999999999" class="btn-gold-outline">📞 Call to Order</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info reveal">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">Visit or<br>Contact Us</h2>
+      <div style="margin-top: 28px;">
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Address</div>
+            <div class="contact-detail-value">Shop No. 103, Gali No. 3, Hari Nagar,<br>Anaj Mandi, Gurugram, Haryana</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-value"><a href="tel:+919999999999">+91 99999 99999</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-detail-label">Business Hours</div>
+            <div class="contact-detail-value">
+              <div class="hours-grid">
+                <div class="hours-row"><span class="hours-day">Mon – Sat</span><span class="hours-time">7:00 AM – 9:00 PM</span></div>
+                <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">8:00 AM – 6:00 PM</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📦</div>
+          <div>
+            <div class="contact-detail-label">Delivery</div>
+            <div class="contact-detail-value">Available via Swiggy & WhatsApp orders</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-actions">
+        <a href="https://wa.me/919999999999" target="_blank" class="btn-whatsapp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp Us
+        </a>
+        <a href="https://swiggy.com" target="_blank" class="btn-gold">Order on Swiggy</a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.5!2d77.0266!3d28.4595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zHari+Nagar+Gurugram!5e0!3m2!1sen!2sin!4v1"
+          allowfullscreen="" loading="lazy"
+          title="Star Halal Meat Shop Location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name"><em>Star</em> Halal Meat Shop</div>
+      <div class="footer-brand-since">Gurugram's Trusted Butcher · Since 1995</div>
+    </div>
+    <nav class="footer-links">
+      <a href="#about">Our Story</a>
+      <a href="#products">Fresh Cuts</a>
+      <a href="#quality">Quality</a>
+      <a href="#bulk">Bulk Orders</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a href="https://instagram.com" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @starhalalmeat
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Star Halal Meat Shop. All rights reserved.</div>
+    <div class="footer-halal">100% Halal Certified · Fresh Daily · Gurugram</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu (basic)
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = '';
+    } else {
+      links.style.cssText = 'display:flex; flex-direction:column; position:fixed; top:72px; left:0; right:0; background:rgba(11,11,11,0.97); padding:24px 5%; gap:20px; border-bottom:1px solid rgba(199,138,46,0.2); z-index:999;';
+    }
+  }
+
+  // Nav shrink on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.style.height = '60px';
+      navbar.style.background = 'rgba(11,11,11,0.97)';
+    } else {
+      navbar.style.height = '72px';
+      navbar.style.background = 'rgba(11,11,11,0.92)';
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>
