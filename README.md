@@ -1,40 +1,30 @@
 # Star Halal Meat Shop
 
-Marketing website for Star Halal Meat Shop, Gurugram. Built as a static site and
-served with **GitHub Pages + Jekyll**. The single long `index.html` has been split
-into small section files inside `_includes/` so each part of the page is easy to edit.
+Marketing website for **Star Halal Meat Shop**, Gurugram — a fresh halal chicken &
+mutton butcher serving the city since 1995. It's a plain static site (HTML, CSS,
+JavaScript) with no build step, so it runs anywhere: open it locally with Live
+Server or push it straight to GitHub Pages.
 
 ## Project structure
 
 ```
 .
-├── index.html            ← page shell — pulls in each section with {% include %}
-├── style.css             ← all styling (unchanged)
-├── script.js             ← all behaviour: reveal, nav, hamburger, FAQ (unchanged)
-├── _config.yml           ← Jekyll build settings (GitHub Pages reads this)
-├── site.webmanifest      ← PWA manifest referenced in <head>
-├── _includes/            ← the page split into sections:
-│   ├── head.html         ← <head>: SEO meta, Open Graph, JSON-LD schema, fonts
-│   ├── nav.html          ← top navigation + mobile drawer
-│   ├── hero.html         ← hero banner
-│   ├── stats.html        ← trust stats bar
-│   ├── about.html        ← "Our Legacy" section
-│   ├── products.html     ← "Fresh Cuts" product grid
-│   ├── quality.html      ← quality & hygiene
-│   ├── bulk.html         ← bulk / wedding orders
-│   ├── how-to-order.html ← how to order steps
-│   ├── why.html          ← reviews / testimonials
-│   ├── faq.html          ← FAQ accordion
-│   ├── contact.html      ← contact details + map
-│   └── footer.html       ← footer
-└── (your images/logos)   ← see below
+├── index.html          ← the entire page (all sections in one file)
+├── style.css           ← all styling
+├── script.js           ← behaviour: scroll reveal, sticky nav, mobile menu, FAQ accordion
+├── site.webmanifest    ← PWA manifest referenced in <head>
+└── (images & logos)    ← see below
 ```
 
-## Where to put your images
+Everything lives in `index.html` — hero, stats, about, products, quality, bulk
+orders, how-to-order, reviews, FAQ, contact/map, and footer are all sections inside
+that one file. To edit a part of the page, search for its section comment (for
+example `<!-- ── 4. FRESH CUTS / PRODUCTS ── -->`) and edit right there.
 
-Drop all your image and logo files in the **root of the project** (next to
-`index.html`), because that's exactly how they're referenced. The files the site
-expects are:
+## Images this site expects
+
+Place these files in the **root of the project** (next to `index.html`) — that's how
+they're referenced:
 
 - `favicon1.png`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`
 - `logo1.png`
@@ -43,26 +33,36 @@ expects are:
 - `Mutton_Curry_Cut.jpg`
 - `qr_code.jpeg`
 
-(The other product/gallery images load from Unsplash URLs and need no local files.)
-
-## Editing a section
-
-Want to change the FAQ? Open `_includes/faq.html`. Want to change the phone number
-in the footer? Open `_includes/footer.html`. Each file is just the HTML for that
-one block — no need to scroll through the whole page anymore.
+The remaining product and gallery images load from external Unsplash URLs, so they
+need no local files.
 
 ## Running it
 
-**On GitHub Pages (recommended):** just push these files to your repo. In
-`Settings → Pages`, set the source to your branch. GitHub builds the Jekyll site
-automatically — no extra setup, and the `{% include %}` tags are turned into the
-final combined HTML on their servers.
+**Local preview:** right-click `index.html` in VS Code and choose *"Open with Live
+Server"* (or just double-click the file to open it in a browser). No Ruby, no build,
+no setup.
 
-**Local preview (optional):** because the page is now assembled at build time, you
-can't just double-click `index.html` — you need Jekyll to stitch the includes:
+**Deploy on GitHub Pages:** push these files to your repository, then in
+`Settings → Pages` set the source to your branch. The site goes live at
+`https://<username>.github.io/<repo>/`.
 
-```bash
-gem install bundler jekyll
-jekyll serve
-# then open http://localhost:4000
-```
+## Tech
+
+- Semantic HTML5 with Schema.org / JSON-LD structured data (LocalBusiness, FAQ,
+  breadcrumbs) for SEO
+- Open Graph + Twitter Card meta tags for link previews (WhatsApp, Facebook, etc.)
+- Vanilla CSS (custom properties, grid, flexbox) — no framework
+- Vanilla JavaScript (IntersectionObserver for reveal animations and active-nav
+  highlighting) — no dependencies
+- Google Fonts: Cormorant Garamond + DM Sans
+
+## Note before deploying
+
+Two asset paths use a leading slash — `/site.webmanifest` and `/qr_code.jpeg`. These
+work in Live Server but will 404 on a GitHub Pages **project** site (one served from
+a `/<repo>/` subfolder). If you deploy to a project URL, change them to
+`./site.webmanifest` and `./qr_code.jpeg` so they resolve in both places.
+
+---
+
+© 2025 Star Halal Meat Shop, Gurugram. All rights reserved.
